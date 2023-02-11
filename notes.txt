@@ -1,0 +1,19 @@
+`https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`
+
+need to be able to store past searches and put the coords into the new request
+
+need to get :
+functionality first
+functionality first
+functionality first
+
+test api
+get 200
+
+
+geocoding api 
+http://api.openweathermap.org/geo/1.0/direct?q=
+concord,NH,US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654
+
+
+figure out scope!!!  ???
