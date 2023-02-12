@@ -7,8 +7,23 @@ var todayContainer = document.getElementById('today');
 
 var cityContainer = document.getElementById('lists');
 var fetchButton = document.getElementById('fetch-button');
+var cityForm=document.querySelector('form')
+var formData;
+var citee;
+var state;
 
+cityForm.addEventListener("submit", myFunction);
+cityForm.addEventListener('submit', (e) => {e.preventDefault();
 
+  formData=new FormData(cityForm);
+  for (item of formData) {localStorage.setItem(item[0], item[1]);
+  }
+
+})
+
+var myFunction=function(){
+  console.log("this"+ cityForm);
+  }
 
 function getApiTown(requestUrlTown) {
   fetch(requestUrlTown)
@@ -48,7 +63,6 @@ var myTruncatedString = myString.substring(0,length);
 todayContainer.append(myTruncatedString)
 
 
-        console.log(data.list[0].weather.icon)
         var url =  "http://openweathermap.org/img/wn/"+data.list[0].weather[0].icon+"@2x.png";
         var image = new Image();
         image.src=url;
@@ -77,7 +91,6 @@ var myTruncatedString = myString.substring(0,length);
 date.textContent=data.list[i].dt_txt;
 cityContainer.append(myTruncatedString)
 
-        console.log(data.list[i].weather.icon)
         var url =  "http://openweathermap.org/img/wn/"+data.list[i].weather[0].icon+"@2x.png";
         var image = new Image();
         image.src=url;
@@ -95,18 +108,11 @@ cityContainer.append(myTruncatedString)
         var description = document.createElement('li');
         description.textContent = data.list[i].weather[0].description;
         cityContainer.append(description);
-      
       }
-
-      
     });
   }
   getApi(requestUrl)
 })
-};
+}
 getApiTown(requestUrlTown);
-
-
-// and again
-
 
