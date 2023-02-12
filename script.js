@@ -1,11 +1,9 @@
 
 var requestUrlTown;
 // = 'http://api.openweathermap.org/geo/1.0/direct?q=concord,NH,US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654'
-var responseTextTown = document.getElementById('response-text');
 var latitude;
 var longitude;
 var todayContainer = document.getElementById('today');
-
 var cityContainer = document.getElementById('lists');
 var fetchButton = document.getElementById('fetch-button');
 var cityForm=document.querySelector('form')
@@ -47,7 +45,6 @@ longitude=data[0].lon;
 
 
 
-console.log(latitude +"changes in")
   var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat='+latitude+'&lon='+longitude+'&appid=34521a28a4def3010dcdc2b1c8619654&units=imperial';
   
 function getApi(requestUrl) {
@@ -65,13 +62,15 @@ function getApi(requestUrl) {
 date.textContent=data.list[0].dt_txt;
 var length = 10;
 var myString = data.list[0].dt_txt;
-var myTruncatedString = myString.substring(6,length);
+var myTruncatedString = "Today";
+todayContainer.setAttribute("class","card")
 todayContainer.append(myTruncatedString)
 
 
         var url =  "http://openweathermap.org/img/wn/"+data.list[0].weather[0].icon+"@2x.png";
         var image = new Image();
         image.src=url;
+        image.setAttribute("class","w-25");
         document.getElementById('today').appendChild(image);
 
         var temperature = document.createElement('li');
@@ -89,36 +88,68 @@ todayContainer.append(myTruncatedString)
 
 
       for (var i = 7; i < data.list.length; i=i+8) {
-var date = document.createElement('h2');
+if (i==7){
+  var box =document.createElement('span');
+  box.setAttribute("id","seven");
+  box.setAttribute("class","card")
+}else
+if (i==15){
+  var box =document.createElement('span');
+  box.setAttribute("id","fifteen");
+  box.setAttribute("class","card")
+}else
+if (i==23){
+  var box =document.createElement('span');
+  box.setAttribute("id","twentythree");
+  box.setAttribute("class","card")
+}else
+if (i==31){
+  var box =document.createElement('span');
+  box.setAttribute("id","thirtyone");
+  box.setAttribute("class","card")
+}else
+if (i=39){
+  var box =document.createElement('span');
+  box.setAttribute("id","thirtynine");
+  box.setAttribute("class","card")
+}
 
+
+var date = document.createElement('h2');
 var length = 10;
 var myString = data.list[i].dt_txt;
 date= myString.substring(6,length);
 date.textContent=data.list[i].dt_txt;
-cityContainer.append(date)
+box.append(date);
+cityContainer.append(box);
 
         var url =  "http://openweathermap.org/img/wn/"+data.list[i].weather[0].icon+"@2x.png";
         var image = new Image();
         image.src=url;
         image.setAttribute("class","w-25");
-        document.getElementById('lists').appendChild(image);
+        box.append(image);
+        document.getElementById('lists').appendChild(box);
 
         
         var temperature = document.createElement('li');
-        temperature.textContent = data.list[i].main.temp;
-        cityContainer.append(temperature)
+        temperature.textContent = "Temp "+data.list[i].main.temp+" °F";
+        box.append(temperature);
+        cityContainer.append(box);
 
         var main = document.createElement('li');
         main.textContent = "Humidity: "+data.list[i].main.humidity;
-        cityContainer.append(main);
+        box.append(main);
+        cityContainer.append(box);
 
         var description = document.createElement('li');
         description.textContent = "Wind: "+data.list[i].wind.speed;
-        cityContainer.append(description);
+        box.append(description)
+        cityContainer.append(box);
 
         var blank=document.createElement('p');
         blank.textContent=" ";
-        cityContainer.append(blank);
+        box.append(blank)
+        cityContainer.append(box);
       }
     });
   }

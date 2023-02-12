@@ -17,3 +17,9 @@ concord,NH,US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654
 
 
 figure out scope!!!  ???
+
+
+maybe make a unique div for every time the daily forcast runs?  Like make a function within the for loop so it all stays in a div that is created.  
+
+
+add day.js and fuck with it
