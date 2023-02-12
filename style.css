@@ -5,3 +5,15 @@ body{
 #buttn{
     height: 3em;
 }
+
+*{
+    list-style-type: none; /* Remove bullets */
+    padding: 1; /* Remove padding */
+    margin: 1; /* Remove margins */
+
+  }
+
+  h2{
+    font-size: 2em;
+    font-weight: bolder;
+  }
