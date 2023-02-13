@@ -10,16 +10,40 @@ var cityForm=document.querySelector('form')
 var formData;
 var city;
 var state;
+const history=[];
+let newObject;
+const historyParse=[];
 var myFunction=function(){
   console.log("this"+ cityForm.City);
   city=localStorage.getItem("City");
-  console.log(city);
+  history.push(city)
 state=localStorage.getItem("State");
-console.log(state);
+history.push(state);
+console.log(history);
+
+newObject = window.localStorage.getItem("History");
+console.log(newObject+"wut")
+if (newObject ==null){historyParse[0]=history; console.log(historyParse+"these")}
+else {historyParse[0]=JSON.parse(newObject); historyParse.push(history);console.log(historyParse+"horatio")}
+console.log(historyParse);
+
+window.localStorage.setItem("History", JSON.stringify(historyParse));
+console.log(historyParse);
+
 requestUrlTown = 'http://api.openweathermap.org/geo/1.0/direct?q='+city+','+state+',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654'
 getApiTown(requestUrlTown);
+historyButtons();
  }
+
+ var historyButtons=function(){
+  for (var i = 1; i < historyParse.length; i++) {
+  
+  }
+ };
+ //need to make array that holds city name and coordinates
+ //need to make button for locations based on history.length
 //cityForm.addEventListener("submit", myFunction);
+//if isnull
 cityForm.addEventListener('submit', (e) => {e.preventDefault();
 
   formData=new FormData(cityForm);
@@ -157,4 +181,3 @@ cityContainer.append(box);
 })
 }
 //getApiTown(requestUrlTown);
-
