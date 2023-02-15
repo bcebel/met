@@ -1,3 +1,43 @@
 body{
   background-image: url(20230213_092540.jpg);
 }
+
+#today {
+
+  width: 80%vw;
+  padding-left: 50%vw;
+}
+#weatherblock {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+  align-items: center;
+  align-content: center;
+
+}
+
+#seven {
+
+
+}
+
+#fifteen {
+
+}
+
+#twentythree {
+ 
+}
+
+#thirtyone {
+ 
+}
+
+#thirtynine {
+
+}
+
+#history {
+  padding: 1em
+}
