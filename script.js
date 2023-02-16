@@ -143,38 +143,7 @@ var historyButtons = function () {
     getApiTown(requestUrlTown); })
 
 }
-  /*
-console.log(historyParse.length);
-  if (historyParse.length == 2) {
-    bttn = document.createElement('button');
-    bttn.textContent = historyParse[0] + " " + historyParse[1];
-    oldTownRoad.append(bttn);
-    bttn.addEventListener('click', (e) => {
-      e.preventDefault();
-   todayContainer.remove();
-   cityContainer.remove();
-      theCity = historyParse[0];
-      theState = historyParse[1];
-      requestUrlTown = 'http://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
-      getApiTown(requestUrlTown);
-    });
-  }
 
-  else if (historyParse.length == 4) {
-    bttn = document.createElement('button');
-    bttn.textContent = historyParse[0] + " " + historyParse[1];
-    bttn.addEventListener('click', (e) => {
-      e.preventDefault();
-      theCity = historyParse[0];
-      theState = historyParse[1];
-      requestUrlTown = 'http://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
-      document.querySelector('theForm').reset();
-      getApiTown(requestUrlTown);
-
-    });
-};
-};
-*/
 
 
 function getApiTown(requestUrlTown) {
@@ -209,7 +178,7 @@ getApi(requestUrl);
             var image = new Image();
             image.src = url;
             image.setAttribute("class", "w-25");
-            document.getElementById('today').appendChild(image);
+            todayContainer.append(image);
 
             var date = document.createElement('h2');
             date.textContent = "Today"
@@ -253,6 +222,7 @@ getApi(requestUrl);
                         box.setAttribute("id", "thirtynine");
                         box.setAttribute("class", "col")
                       }
+cityContainer.setAttribute("class", "row")
 
               var date = document.createElement('h2');
               var length = 10;
@@ -267,7 +237,7 @@ getApi(requestUrl);
               image.src = url;
               image.setAttribute("class", "w-25");
               box.append(image);
-              document.getElementById('lists').appendChild(box);
+              cityContainer.appendChild(box);
 
               var temperature = document.createElement('li');
               temperature.textContent = "Temp " + data.list[i].main.temp + " °F";
