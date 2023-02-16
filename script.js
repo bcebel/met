@@ -46,17 +46,22 @@ var myFunction = function () {
 
   console.log(historyParse);
 
-  requestUrlTown = 'http://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654'
+  requestUrlTown = 'https://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654'
   getApiTown(requestUrlTown);
 
 }
 
+var previous = document.createElement('h3');
+previous.textContent="Previous Searches";
+oldTownRoad.append(previous);
 
 var historyButtons = function () {
 
+
+
   bttn1 = document.createElement('button');
   bttn1.setAttribute("class","buttony")
-  if (historyParse[0] === undefined) {bttn1.textContent=""} else{
+  if (historyParse[0] === undefined || historyParse[1]=== undefined) {bttn1.textContent=""} else{
   
   bttn1.textContent = historyParse[0] + " " + historyParse[1];}
   oldTownRoad.append(bttn1);
@@ -67,12 +72,12 @@ var historyButtons = function () {
  cityContainer.textContent="";
     theCity = historyParse[0];
     theState = historyParse[1];
-    requestUrlTown = 'http://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
+    requestUrlTown = 'https://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
     getApiTown(requestUrlTown); })
 
   bttn2= document.createElement('button');
   bttn2.setAttribute("class","buttony")
-  if (historyParse[2] === undefined) {bttn2.textContent=""} else{
+  if (historyParse[2] === undefined || historyParse[3]=== undefined) {bttn2.textContent=""} else{
 
   bttn2.textContent = historyParse[2] + " " + historyParse[3]};
   oldTownRoad.append(bttn2);
@@ -83,13 +88,13 @@ var historyButtons = function () {
  cityContainer.textContent="";
     theCity = historyParse[2];
     theState = historyParse[3];
-    requestUrlTown = 'http://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
+    requestUrlTown = 'https://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
     getApiTown(requestUrlTown); })
 
 
   bttn3 = document.createElement('button');
   bttn3.setAttribute("class","buttony")
-  if (historyParse[4] === undefined) {bttn2.textContent=""} else{
+  if (historyParse[4] === undefined || historyParse[5]=== undefined) {bttn2.textContent=""} else{
 
   bttn3.textContent = historyParse[4] + " " + historyParse[5]};
   oldTownRoad.append(bttn3);  
@@ -100,13 +105,13 @@ var historyButtons = function () {
  cityContainer.textContent="";
     theCity = historyParse[4];
     theState = historyParse[5];
-    requestUrlTown = 'http://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
+    requestUrlTown = 'https://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
     getApiTown(requestUrlTown); })
 
 
   bttn4= document.createElement('button');
   bttn4.setAttribute("class","buttony")
-  if (historyParse[6] === undefined) {bttn2.textContent=""} else{
+  if (historyParse[6] === undefined || historyParse[7]=== undefined) {bttn2.textContent=""} else{
 
   bttn4.textContent = historyParse[6] + " " + historyParse[7]};
   oldTownRoad.append(bttn4);
@@ -117,13 +122,13 @@ var historyButtons = function () {
  cityContainer.textContent="";
     theCity = historyParse[6];
     theState = historyParse[7];
-    requestUrlTown = 'http://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
+    requestUrlTown = 'https://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
     getApiTown(requestUrlTown); })
 
 
   bttn5 = document.createElement('button');
   bttn5.setAttribute("class","buttony")
-  if (historyParse[8] === undefined) {bttn2.textContent=""} else{
+  if (historyParse[8] === undefined || historyParse[8]=== undefined) {bttn2.textContent=""} else{
 
   bttn5.textContent = historyParse[8] + " " + historyParse[9]};
   oldTownRoad.append(bttn5);
@@ -134,7 +139,7 @@ var historyButtons = function () {
  cityContainer.textContent="";
     theCity = historyParse[8];
     theState = historyParse[9];
-    requestUrlTown = 'http://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
+    requestUrlTown = 'https://api.openweathermap.org/geo/1.0/direct?q=' + theCity + ',' + theState + ',US&limit=5&appid=34521a28a4def3010dcdc2b1c8619654';
     getApiTown(requestUrlTown); })
 
 }
@@ -200,7 +205,7 @@ getApi(requestUrl);
             cityName.textContent = data.city.name;
             todayContainer.append(cityName);
 
-            var url = "http://openweathermap.org/img/wn/" + data.list[0].weather[0].icon + "@2x.png";
+            var url = "https://openweathermap.org/img/wn/" + data.list[0].weather[0].icon + "@2x.png";
             var image = new Image();
             image.src = url;
             image.setAttribute("class", "w-25");
@@ -257,7 +262,7 @@ getApi(requestUrl);
               box.append(date);
               cityContainer.append(box);
 
-              var url = "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
+              var url = "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
               var image = new Image();
               image.src = url;
               image.setAttribute("class", "w-25");
